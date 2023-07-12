@@ -20,8 +20,7 @@ public class UserServiceImpl implements IUserService {
 
 	@Override
 	public void signup(User user) {
-		userRepo.save(user);
-		
+		userRepo.save(user);	
 	}
 
 	@Override
