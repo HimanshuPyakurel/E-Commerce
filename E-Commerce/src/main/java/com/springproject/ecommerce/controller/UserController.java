@@ -38,12 +38,10 @@ public class UserController {
 	
 	@PostMapping("/login")
 	public String postLogin(@ModelAttribute User user, Model model, HttpSession session, @RequestParam("g-recaptcha-response") String grcCode) throws IOException {
-		
-		if(VerifyRecaptcha.verify(grcCode)) {
 			
 			user.setPassword(DigestUtils.md5DigestAsHex(user.getPassword().getBytes()));
 			User  usr = userService.login(user.getUname(), user.getPassword());
-			
+			System.out.println("=========="+usr);
 				if(usr != null) {
 					log.info("---------- Login Success ---------");
 					
@@ -60,13 +58,6 @@ public class UserController {
 				
 				
 			}
-			
-				log.info("---------- Login Failed ---------");
-				model.addAttribute("message","You are not human !!!");
-				return  "login";
-	
-			}
-		
 	
 	
 	@GetMapping("/signup")
@@ -81,7 +72,7 @@ public class UserController {
 		
 		user.setPassword(DigestUtils.md5DigestAsHex(user.getPassword().getBytes()));
 		userService.signup(user);
-		model.addAttribute("message","Signup Successful");
+		model.addAttribute("message1","Signup Successful");
 		return "login";
 	}
 	
@@ -105,7 +96,7 @@ public class UserController {
 	
 	public String postForgetpwd(@RequestParam String toEmail) {
 		mailutils.forgetpwdEmail(toEmail);
-		return "ForgetPassword";
+		return "login";
 	}
 	
 
