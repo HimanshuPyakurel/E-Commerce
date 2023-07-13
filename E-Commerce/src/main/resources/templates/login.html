@@ -28,11 +28,12 @@
                         <h2 class="form-title">Login</h2>
                         <form action="/user/login" method="POST" class="register-form" id="login-form">
                            
-                           <p style="color:red"> [[${message}]] </p><br>
+                           <p style="color:red"> [[${message}]] </p>
+                           <p style="color:blue"> [[${message1}]] </p><br>
                            
                             <div class="form-group">
                                 <label for="your_name"><i class="zmdi zmdi-account material-icons-name"></i></label>
-                                <input type="text" name="username" id="your_name" placeholder="Your Name"/>
+                                <input type="text" name=uname id="your_name" placeholder="Your Name"/>
                             </div>
                             <div class="form-group">
                                 <label for="your_pass"><i class="zmdi zmdi-lock"></i></label>
