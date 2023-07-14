@@ -59,7 +59,6 @@ public class UserController {
 				
 			}
 	
-	
 	@GetMapping("/signup")
 	public String getSingup() {
 		return "signup";
@@ -83,7 +82,7 @@ public class UserController {
 		
 		session.invalidate();	//session kill
 		
-		return "LoginForm";
+		return "login";
 	}
 	
 	@GetMapping("/forget")
@@ -93,10 +92,19 @@ public class UserController {
 	}
 	
 	@PostMapping("/forget")
-	
 	public String postForgetpwd(@RequestParam String toEmail) {
 		mailutils.forgetpwdEmail(toEmail);
 		return "login";
+	}
+	
+	@GetMapping("/shop")
+	public String shop() {
+		return "shop";
+	}
+	
+	@GetMapping("/home")
+	public String home() {
+		return "Home";
 	}
 	
 
