@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>View Product</title>
+
+</head>
+<body>
+	
+	<th:block th:insert="Header.html"></th:block>
+
+	<div class="container-fluid">
+
+		<div class="card">
+			<div class="card-header text-center bg-primary text-white "><h5>Employee Edit Form</h5></div>
+			
+			<div class="card-body">
+			
+		<form action="/product/view" method="post" th:object="${prodObject}" >
+			   
+			   <div class="text-center">
+  	
+		  	 <div class="row p-2">
+				<div class="col-4">Name</div>
+					<div class="col-6">
+						<input type="text" name="prod_name" th:field="*{prod_name}" readonly="readonly" class="form-control" placeholder="Enter product name..."><br>		
+					</div>
+				</div>
+				
+				
+				<div class="row p-2">
+				<div class="col-4">Price</div>
+					<div class="col-6">
+						<input type="text" name="prod_price" th:field="*{prod_price}" readonly="readonly" class="form-control" placeholder="Enter product price..."><br>		
+					</div>
+				</div>
+				
+				
+				<div class="row p-2">
+				<div class="col-4">Code</div>
+					<div class="col-6">
+						<input type="text" name="prod_code" th:field="*{prod_code}" readonly="readonly" class="form-control" placeholder="Enter product code.."><br>		
+					</div>
+				</div>
+				
+				<div class="row p-2">
+				<div class="col-4">Description</div>
+					<div class="col-6">
+						<input type="text" name="prod_description" th:field="*{prod_description}" readonly="readonly" class="form-control" placeholder="Short description of product..."><br>		
+					</div>
+				</div>
+				
+			
+				<div class="row p-2">
+					      <div class="col-4">Category</div>
+					      <div class="col-6">
+					         
+					         <select name="category"  th:field="*{category}" disabled="disabled" class="form-control">			  
+					         	<option value="">Select</option>
+					         	<option th:each="cat:${catObject}" th:value="${cat.id}">[[${cat.category_name}]]</option>			        			         
+					         </select>
+					     
+					      
+					      </div>
+					</div>
+	
+			
+				</div><br>
+				
+				<div class="row p-2 text-center">
+				<div class="col-4">Select Image</div>
+					<div class="col-6">
+						<input type="text" name="prod_image" th:field="*{prod_image}"  readonly="readonly" class="form-control"><br>		
+					</div>
+				</div>
+					   
+				<div class="row p-1">
+					      <div class="col-4"></div>
+					      		<div class="col-6">
+					         		 <input type="submit" value="Update" class="btn btn-success btn-lg">
+					      		</div>
+					   	</div>
+			   
+			   <input type="hidden" th:field="*{id}">
+			   
+			</form>  
+			   
+			</div>
+		</div>
+	</div>
+	
+	<th:block th:insert="footer.html"></th:block> 
+
+</body>
+</html>
