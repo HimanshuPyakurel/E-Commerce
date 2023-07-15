@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Product list</title>
+
+</head>
+<body>
+<th:block th:insert="header.html"></th:block>
+	
+	<div class="container-fluid">
+	
+		<div class="card">
+		
+			<div class="card-header text-center bg-primary text-white"><h5>Product List</h5></div>
+
+				<div class="card-body">
+		
+					<table class="table text-center table-stripted">
+						<thead>
+							<tr>
+								<th>Category Name</th>
+								
+								<th>Action</th>
+								
+							</tr>
+						</thead>
+						
+						<tbody>
+							<tr th:each="cat: ${catlist}">
+								<td>[[${cat.category_name}]]</td>
+								
+								<th>
+									<a th:href="@{/category/edit(id=${cat.id})}"> <input type="submit" value="Edit" class="btn btn-success btn-sm"></a>
+									<a th:href="@{/category/delete(id=${cat.id})}"> <input type="submit" value="Delete" class="btn btn-danger btn-sm"></a>
+							
+								</th>
+														
+							</tr>
+							
+						</tbody>
+					
+					</table>
+				
+			</div>
+		</div>
+		
+	</div>
+	<th:block th:insert="footer.html"></th:block>
+	
+</body>
+</html>
