@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Product list</title>
+
+</head>
+<body>
+<th:block th:insert="header.html"></th:block>
+	
+	<div class="container-fluid">
+	
+		<div class="card">
+		
+			<div class="card-header text-center bg-primary text-white"><h5>Product List</h5></div>
+
+				<div class="card-body">
+		
+					<table class="table table-stripted">
+						<thead>
+							<tr>
+								<th>Product Name</th>
+								
+								<th>Product Price</th>
+								
+								<th>Code</th>
+								
+								<th>Category</th>
+								
+								<th>Action</th>
+							</tr>
+						</thead>
+						
+						<tbody>
+							<tr th:each="pro: ${prodlist}">
+								<td>[[${pro.prod_name}]]</td>
+								
+								<td>[[${pro.prod_price}]]</td>
+								
+								<td>[[${pro.prod_code}]]</td>
+								
+								
+								<td>[[${pro.category.category_name}]]</td>			
+								
+								<th>
+									<a th:href="@{/product/edit(id=${pro.id})}"> <input type="submit" value="Edit" class="btn btn-success btn-sm"></a>
+									<a th:href="@{/product/delete(id=${pro.id})}"> <input type="submit" value="Delete" class="btn btn-danger btn-sm"></a>
+									<a th:href="@{/product/view(id=${pro.id})}"> <input type="submit" value="View" class="btn btn-primary btn-sm"></a>
+							
+								</th>
+								
+							</tr>
+							
+						</tbody>
+					
+					</table>
+				
+			</div>
+		</div>
+		
+	</div>
+	
+	<th:block th:insert="footer.html"></th:block>
+	
+</body>
+</html>
