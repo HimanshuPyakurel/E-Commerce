@@ -21,7 +21,7 @@ public class CategoryServiceImpl implements CategoryService{
 	}	
 
 	@Override
-	public void deleteCategory(long id) {
+	public void deleteCategory(int id) {
 		catRepo.deleteById(id);
 	}
 
@@ -31,7 +31,7 @@ public class CategoryServiceImpl implements CategoryService{
 	}
 
 	@Override
-	public Category getCategoryById(long id) {
+	public Category getCategoryById(int id) {
 		
 		return catRepo.findById(id).get();
 	}
@@ -41,6 +41,8 @@ public class CategoryServiceImpl implements CategoryService{
 		
 		return catRepo.findAll();
 	}
+
+
 	
 	
 }
