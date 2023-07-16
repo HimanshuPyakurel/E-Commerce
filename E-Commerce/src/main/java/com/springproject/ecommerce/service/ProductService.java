@@ -10,10 +10,20 @@ public interface ProductService {
 	
 	void updateProduct(Product product);
 	
-	void deleteProduct(Long id);
+	void deleteProduct(int id);
 	
-	Product getProductById(Long id);
+	Product findProductById(int id);
 	
-	List<Product> getAllProduct();
+	List<Product> findAllProduct();
+	
+	List<Product> findAllProductsForAdmin();
+
+	List<Product> findProductByCategoryId(Integer categoryId);
+
+	Product findProductByIdForAdmin(int id);
+
+	    
+
+	    
 	
 }
