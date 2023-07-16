@@ -7,11 +7,11 @@ public interface CategoryService {
 
 	void addCategory(Category category);
 	
-	void deleteCategory(long id);
+	void deleteCategory(int id);
 
 	void updateCategory(Category category);
 	
-	Category getCategoryById(long id);
+	Category getCategoryById(int id);
 	
 	List<Category> getAllCategory();
 	
