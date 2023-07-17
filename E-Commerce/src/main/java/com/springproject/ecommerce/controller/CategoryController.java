@@ -39,7 +39,7 @@ public class CategoryController {
 	}
 	
 	 @GetMapping("/delete")
-	 public String delete(@RequestParam long id) {
+	 public String delete(@RequestParam int id) {
 		 	
 		 	categoryservice.deleteCategory(id);
 		 
@@ -47,7 +47,7 @@ public class CategoryController {
 	 }
 	 
 	 @GetMapping("/edit")
-		public String editEmp(@RequestParam long id, Model model) {
+		public String editEmp(@RequestParam int id, Model model) {
 
 			model.addAttribute("catObject", categoryservice.getCategoryById(id));
 			
