@@ -39,12 +39,12 @@ public class ProductController {
 	
 	@GetMapping("/list")
 	public String getProductList(Model model) {
-		model.addAttribute("prodlist",prodService.getAllProduct());
+		model.addAttribute("prodlist",prodService.findAllProduct());
 		return "productlist";	
 	}
 	
 	 @GetMapping("/delete")
-	 public String delete(@RequestParam long id) {
+	 public String delete(@RequestParam int id) {
 		 	
 		 	prodService.deleteProduct(id);
 		 
@@ -52,9 +52,9 @@ public class ProductController {
 	 }
 	 
 	 @GetMapping("/edit")
-		public String editEmp(@RequestParam long id, Model model) {
+		public String editEmp(@RequestParam int id, Model model) {
 
-			model.addAttribute("prodObject", prodService.getProductById(id));
+			model.addAttribute("prodObject", prodService.findProductById(id));
 			model.addAttribute("catlist",catService.getAllCategory());
 			
 			return "productEdit";
@@ -69,9 +69,9 @@ public class ProductController {
 	 }
 	 
 	 @GetMapping("/view")
-	 public String view(@RequestParam long id, Model model) {
+	 public String view(@RequestParam int id, Model model) {
 		 
-		 model.addAttribute("prodObject",prodService.getProductById(id));
+		 model.addAttribute("prodObject",prodService.findProductById(id));
 		 model.addAttribute("catObject", catService.getCategoryById(id));
 		 
 		 return "productView";
