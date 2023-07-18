@@ -6,7 +6,7 @@
 
 <body>
   	
-  	<th:block th:insert="header.html"></th:block> 	
+  	<th:block th:insert="Header.html"></th:block> 	
    
    <form action="/product/add" method = "post">
   	<div class="text-center">
@@ -41,6 +41,13 @@
 			</div>
 		</div>
 		
+		<div class="row p-2">
+		<div class="col-4">Quantity</div>
+			<div class="col-6">
+				<input type="text" name="prod_quantity" class="form-control" placeholder="Quantity of product..."><br>		
+			</div>
+		</div>
+		
 	
 		<div class="row p-2">
 			      <div class="col-4">Category</div>
@@ -49,8 +56,7 @@
 			         <select name="category" class="form-control">			  
 			         	<option value="">Select</option>
 			         	<option th:each="cat:${catlist}" th:value="${cat.id}">[[${cat.category_name}]]</option>			        			         
-			         </select>
-			     
+			         </select>			     
 			      
 			      </div>
 			</div>	
@@ -60,10 +66,14 @@
 		<div class="row p-2 text-center">
 		<div class="col-4">Select Image</div>
 			<div class="col-6">
-				<input type="file" name="prod_image" class="form-control"><br>
-						
+
+            <input type="file" class="form-control" id="imageName" name="imageName">			
 			</div>
 		</div>
+		
+
+          
+
 			   
 		<div class="row p-1">
 			      <div class="col-4"></div>
