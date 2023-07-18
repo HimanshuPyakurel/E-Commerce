@@ -97,15 +97,5 @@ public class UserController {
 		return "login";
 	}
 	
-	@GetMapping("/shop")
-	public String shop() {
-		return "shop";
-	}
-	
-	@GetMapping("/home")
-	public String home() {
-		return "Home";
-	}
-	
 
 }
