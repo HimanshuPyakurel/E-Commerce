@@ -24,8 +24,8 @@ public class Product {
 	private String prod_name;
 	private Double prod_price;
 	private String prod_code;
-	private boolean stock;
 	private String prod_description;
-	private String prod_image;	
 	private int prod_quantity;
+	
+	private String imageName;
 }
