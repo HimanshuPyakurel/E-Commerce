@@ -18,7 +18,7 @@ public class Cart {
 	  private int id;
 
 	  @OneToOne
-	  private User user;
+	  private Product product;
 
 	  @Column(name = "grand_total")
 	  private double grandTotal;
