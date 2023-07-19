@@ -50,6 +50,13 @@
 					</div>
 				</div>
 				
+				<div class="row p-2">
+				<div class="col-4">Quantity</div>
+					<div class="col-6">
+						<input type="text" name="prod_quantity" th:field="*{prod_quantity}" readonly="readonly" class="form-control" placeholder="Quantity of product..."><br>		
+					</div>
+				</div>
+				
 			
 				<div class="row p-2">
 					      <div class="col-4">Category</div>
@@ -68,18 +75,12 @@
 				</div><br>
 				
 				<div class="row p-2 text-center">
-				<div class="col-4">Select Image</div>
+				<div class="col-4">Image</div>
 					<div class="col-6">
-						<input type="text" name="prod_image" th:field="*{prod_image}"  readonly="readonly" class="form-control"><br>		
+						<input type="text" name="imageName" th:field="*{imageName}"  readonly="readonly" class="form-control"><br>		
 					</div>
 				</div>
 					   
-				<div class="row p-1">
-					      <div class="col-4"></div>
-					      		<div class="col-6">
-					         		 <input type="submit" value="Update" class="btn btn-success btn-lg">
-					      		</div>
-					   	</div>
 			   
 			   <input type="hidden" th:field="*{id}">
 			   
@@ -89,7 +90,7 @@
 		</div>
 	</div>
 	
-	<th:block th:insert="footer.html"></th:block> 
+	<th:block th:insert="Footer.html"></th:block> 
 
 </body>
 </html>
