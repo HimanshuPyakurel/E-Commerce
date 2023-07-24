@@ -78,20 +78,17 @@
                         </div>
                     </div>
                   
-                    <div class="row is-table-row" >
+                    <div class="row is-table-row" align="center" >
                         <div class="col-sm-4 col-lg-4 col-md-4" th:each="pro: ${prodlist}">
-                            <div class="product__item">
-                                <div class="product__item__pic set-bg" data-setbg="img/product/product-2.jpg">
-                                    <ul class="product__hover">
-                                        <li><a href="#"><img src="img/icon/heart.png" alt=""></a></li>
-                                        <li><a href="#"><img src="img/icon/compare.png" alt=""> <span>Compare</span></a>
-                                        </li>
-                                        <li><a href="#"><img src="img/icon/search.png" alt=""></a></li>
-                                    </ul>
+                            <div class="product__item" >
+                            
+                                <div class="product__item__pic set-bg">
+                                    <img th:src="@{'/images/'+ ${pro.imageName}}" width="200" height="260">
                                 </div>
+                                
                                 <div class="product__item__text">
-                                    <h6>[[${pro.prod_name}]]</h6>
-                                    <a href="/cart/add/${prodlist}" class="add-cart">+ Add To Cart</a>
+                                    <h6 >[[${pro.prod_name}]]</h6>
+                                    <a th:href="@{/cart/home(id=${pro.id})}" class="add-cart">&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;+ Add To Cart</a>
                                     <div class="rating">
                                         <i class="fa fa-star-o"></i>
                                         <i class="fa fa-star-o"></i>
