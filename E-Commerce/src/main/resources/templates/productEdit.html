@@ -16,7 +16,7 @@
 			
 			<div class="card-body">
 			
-		<form action="/product/update" method="post" th:object="${prodObject}" >
+		<form action="/product/update" method="post" th:object="${prodObject}" enctype="multipart/form-data">
 			   
 			   <div class="text-center">
   	
@@ -68,18 +68,17 @@
 					     
 					      
 					      </div>
-					</div>
+					</div><br>
 	
+				<div class="row p-2">
+			      <div class="col-4">Select Image</div>
+			      <div class="col-6">
+			          <input type="file" name="image" class="form-control">
+			      </div>
+			   </div>
 			
 				</div><br>
 				
-				<div class="row p-2 text-center">
-				<div class="col-4">Select Image</div>
-					<div class="col-6">
-						<input type="file" name="imageName" th:field="*{imageName}" class="form-control"><br>
-								
-					</div>
-				</div>
 					   
 				<div class="row p-1">
 					      <div class="col-4"></div>
