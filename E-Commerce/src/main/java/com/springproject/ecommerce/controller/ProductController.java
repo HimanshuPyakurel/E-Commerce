@@ -8,9 +8,13 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
+
 import com.springproject.ecommerce.model.Product;
 import com.springproject.ecommerce.service.CategoryService;
 import com.springproject.ecommerce.service.ProductService;
+import com.springproject.ecommerce.utils.FileUtil;
+import com.springproject.ecommerce.utils.MailUtils;
 
 @Controller
 @RequestMapping("/product")
@@ -18,6 +22,9 @@ public class ProductController {
 	
 	@Autowired
 	public ProductService prodService;
+	
+	@Autowired
+	private FileUtil fileUtils;
 	
 	@Autowired
 	public CategoryService catService;
@@ -30,11 +37,21 @@ public class ProductController {
 	}
 	
 	@PostMapping("/add")
-	public String postProduct(@ModelAttribute Product product) {
+	public String postProduct(@ModelAttribute Product product, @RequestParam MultipartFile image, Model model) {
 		
-		prodService.addProduct(product);
-	
-		return "redirect:/product/add";
+		if(!image.isEmpty()) {
+					
+					String imageName = image.getOriginalFilename();
+					product.setImageName(imageName);
+					fileUtils.imageUpload(image);
+					
+					prodService.addProduct(product);
+					
+					model.addAttribute("message", "Product added successfully !!");
+					return "redirect:/product/add";		
+		}
+		return "productadd";
+		
 	}
 	
 	@GetMapping("/list")
@@ -61,11 +78,21 @@ public class ProductController {
 		}
 	 
 	 @PostMapping("/update")
-	 public String update(@ModelAttribute Product prod) {
+	 public String update(@ModelAttribute Product product, @RequestParam MultipartFile image, Model model) {
 		 
-		 prodService.updateProduct(prod);
-		 
-		 return "redirect:/product/list"; 
+		 if(!image.isEmpty()) {
+				
+				String imageName = image.getOriginalFilename();
+				product.setImageName(imageName);
+				fileUtils.imageUpload(image);
+				
+				prodService.updateProduct(product);
+				
+				model.addAttribute("message", "Product added successfully !!");
+				return "redirect:/product/list";		
+	}
+		 return "productEdit";
+		
 	 }
 	 
 	 @GetMapping("/view")
