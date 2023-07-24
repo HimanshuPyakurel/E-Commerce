@@ -8,7 +8,7 @@
   	
   	<th:block th:insert="Header.html"></th:block> 	
    
-   <form action="/product/add" method = "post">
+   <form action="/product/add" method = "post" enctype="multipart/form-data">
   	<div class="text-center">
   	
   	 <div class="row p-2">
@@ -59,28 +59,24 @@
 			         </select>			     
 			      
 			      </div>
-			</div>	
+			</div>	<br>
+			
+			<div class="row p-2">
+			      <div class="col-4">Select Image</div>
+			      <div class="col-6">
+			          <input type="file" name="image" class="form-control">
+			      </div>
+			   </div>
 	
-	</div><br>
-		
-		<div class="row p-2 text-center">
-		<div class="col-4">Select Image</div>
-			<div class="col-6">
-
-            <input type="file" class="form-control" id="imageName" name="imageName">			
-			</div>
-		</div>
-		
-
-          
-
-			   
-		<div class="row p-1">
+	</div><br>   
+			 
+				   
+			   <div class="row p-2">
 			      <div class="col-4"></div>
-			      		<div class="col-6">
-			         		 <input type="submit" value="Add" class="btn btn-success btn-lg">
-			      		</div>
-			   	</div>
+			      <div class="col-6">
+			          <input type="submit" value="Add" class="btn btn-success btn-lg">
+			      </div>
+			   </div>
 
    </form>
    
