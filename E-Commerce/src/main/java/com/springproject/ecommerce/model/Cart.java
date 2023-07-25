@@ -27,4 +27,7 @@ public class Cart {
 
 	  @Column(name = "cart_lines")
 	  private int cartLines;
+	  
+	  @OneToOne
+	  private User user;
 }
