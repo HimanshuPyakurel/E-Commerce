@@ -1,7 +1,7 @@
 package com.springproject.ecommerce.service;
 
 import com.springproject.ecommerce.model.Cart;
-import com.springproject.ecommerce.model.UserModel;
+
 
 public interface CartService {
 
@@ -9,6 +9,6 @@ public interface CartService {
 
 	 boolean updateCart(Cart cart);
 
-	 Cart findCart(UserModel usermodel);
+	 Cart findCart();
 
 }
