@@ -8,11 +8,16 @@ import com.springproject.ecommerce.model.UserModel;
 import com.springproject.ecommerce.repository.CartRepository;
 import com.springproject.ecommerce.service.CartService;
 
+import jakarta.servlet.http.HttpSession;
+
 @Service
 public class CartServiceImpl implements CartService {
-
+	
 	@Autowired
 	private CartRepository cartRepo;
+	
+	@Autowired
+    private HttpSession httpSession;
 	
 	@Override
 	public boolean saveCart(Cart cart) {
@@ -29,8 +34,9 @@ public class CartServiceImpl implements CartService {
 	}
 
 	@Override
-	public Cart findCart(UserModel usermodel) {
-		return usermodel.getCart();
+	public Cart findCart() {
+
+		return ((UserModel) httpSession.getAttribute("userModel")).getCart();
 	}
 
 }
