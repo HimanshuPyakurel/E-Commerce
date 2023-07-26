@@ -26,6 +26,7 @@
     <!-- Breadcrumb Section End -->
 
     <!-- Shopping Cart Section Begin -->
+   <form action="/cart/show" method="post">
     <section class="shopping-cart spad">
         <div class="container">
             <div class="row">
@@ -41,7 +42,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr th:each="pro: ${prodList}">
+                                <tr th:each="pro: ${prodlist}">
                                     <td class="product__cart__item">
                                         <div class="product__cart__item__pic">
                                             <img th:src="@{'/images/'+ ${pro.imageName}}" width=110 height=110 alt="">
@@ -51,14 +52,16 @@
                                             <h5>[[${pro.prod_price}]]</h5>
                                         </div>
                                     </td>
-                                    <td class="quantity__item">
+                                    <td class="quantity__item" >
                                         <div class="quantity">
                                             <div class="pro-qty-2">
-                                                <input type="text" value=1>
+                                                <input type="text" name="quantity" class="form-control" placeholder="---">
                                             </div>
                                         </div>
                                     </td>
-                                    <td class="cart__price"> </td>
+                                    <td class="cart__price">
+                                    
+                                    </td>
                                     <td class="cart__close"><i class="fa fa-close"></i></td>
                                 </tr>
                              
@@ -79,13 +82,6 @@
                     </div>
                 </div>
                 <div class="col-lg-4">
-                    <div class="cart__discount">
-                        <h6>Discount codes</h6>
-                        <form action="#">
-                            <input type="text" placeholder="Coupon code">
-                            <button type="submit">Apply</button>
-                        </form>
-                    </div>
                     <div class="cart__total">
                         <h6>Cart total</h6>
                         <ul>
@@ -98,6 +94,7 @@
             </div>
         </div>
     </section>
+    </form>
     <!-- Shopping Cart Section End -->
 
 <th:block th:insert="Footer.html"></th:block>
