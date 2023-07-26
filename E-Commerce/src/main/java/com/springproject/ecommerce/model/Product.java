@@ -28,4 +28,5 @@ public class Product {
 	private int prod_quantity;
 	
 	private String imageName;
+	
 }
