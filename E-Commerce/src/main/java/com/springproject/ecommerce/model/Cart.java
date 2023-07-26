@@ -1,33 +1,39 @@
 package com.springproject.ecommerce.model;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "cart")
+@Table(name = "cart_items")
 public class Cart {
-
 	  @Id
 	  @GeneratedValue(strategy = GenerationType.IDENTITY)
-	  @Column(name = "id")
 	  private int id;
 
-	  @OneToOne
-	  private Product product;
-
-	  @Column(name = "grand_total")
-	  private double grandTotal;
-
-	  @Column(name = "cart_lines")
-	  private int cartLines;
+	  @Column(name = "quantity")
+	  private int quantity;
 	  
-	  @OneToOne
-	  private User user;
+	  @Column(name = "total_price")
+	  private double totalPrice;
+	  
+	  @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	  @JoinColumn(name = "shoppingcartId")
+	  private ShoppingCart cart;
+
+	   @OneToOne(fetch = FetchType.EAGER)
+	   @JoinColumn(name = "productId")
+	   private Product product;
+	  
+	  
 }
