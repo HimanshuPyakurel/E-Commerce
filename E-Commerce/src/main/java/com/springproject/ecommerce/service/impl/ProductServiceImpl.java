@@ -50,9 +50,7 @@ public class ProductServiceImpl implements ProductService{
 	}
 
 	@Override
-	public List<Product> findProductByCategoryId(Integer categoryId) {
-		
-		
+	public List<Product> findProductByCategoryId(Long categoryId) {
 		
 		return prodRepo.findProductByCategoryId(categoryId);
 	}
