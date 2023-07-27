@@ -12,7 +12,7 @@
 	
 		<div class="card">
 		
-			<div class="card-header text-center bg-primary text-white"><h5>Product List</h5></div>
+			<div class="card-header text-center bg-primary text-white"><h5>Product List</h5></div><br>
 
 				<div class="card-body">
 		
@@ -49,7 +49,7 @@
 									<a th:href="@{/product/edit(id=${pro.id})}"> <input type="submit" value="Edit" class="btn btn-success btn-sm"></a>
 									<a th:href="@{/product/delete(id=${pro.id})}"> <input type="submit" value="Delete" class="btn btn-danger btn-sm"></a>
 									<a th:href="@{/product/view(id=${pro.id})}"> <input type="submit" value="View" class="btn btn-primary btn-sm"></a>
-							
+							<br>
 								</th>
 								
 							</tr>
@@ -62,7 +62,7 @@
 		</div>
 		
 	</div>
-	
+	<br><br><br><br><br><br>
 	<th:block th:insert="footer.html"></th:block>
 	
 </body>
