@@ -12,7 +12,7 @@
 	<div class="container-fluid">
 
 		<div class="card">
-			<div class="card-header text-center bg-primary text-white "><h5>Employee Edit Form</h5></div>
+			<div class="card-header text-center bg-primary text-white "><h5>Product View Form</h5></div><br>
 			
 			<div class="card-body">
 			
@@ -78,8 +78,16 @@
 				<div class="col-4">Image</div>
 					<div class="col-6">
 						<input type="text" name="imageName" th:field="*{imageName}"  readonly="readonly" class="form-control"><br>		
+					
 					</div>
 				</div>
+				
+				<div class="row p-2">
+			      <div class="col-4"></div>
+			      <div class="col-2">
+			          <a href="/product/list"><button type="button" class="btn btn-success btn-lg">Back</button></a><br><br>
+			      </div>
+			      </div>
 					   
 			   
 			   <input type="hidden" th:field="*{id}">
