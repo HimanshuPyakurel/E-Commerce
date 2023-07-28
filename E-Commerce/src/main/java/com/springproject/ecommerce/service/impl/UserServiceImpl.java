@@ -41,6 +41,12 @@ public class UserServiceImpl implements IUserService {
 		
 	}
 
+	@Override
+	public User findByUname(String uname) {
+		
+		return userRepo.findByUname(uname);
+	}
+
 
 	
 }
