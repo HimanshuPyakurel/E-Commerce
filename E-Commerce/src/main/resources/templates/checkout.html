@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="zxx" xmlns:th="https://www.thymeleaf.org">
+
+<head>
+
+</head>
+
+<body>
+	
+	<th:block th:insert="header.html"></th:block>
+
+    <!-- Breadcrumb Section Begin -->
+    <section class="breadcrumb-option">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="breadcrumb__text">
+                        <h4>Check Out</h4>
+                        <div class="breadcrumb__links">
+                            <a href="/home/index">Home</a>
+                            <a href="/shop/index">Product</a>
+                            <span>Check Out</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Breadcrumb Section End -->
+
+    <!-- Checkout Section Begin -->
+    <section class="checkout spad">
+        <div class="container">
+            <div class="checkout__form">
+                <form action="/cart/checkout" method ="post">
+                    <div class="row" th:each="item: ${session.cart}">
+                        <div class="col-lg-8 col-md-6">
+                            <h6 class="checkout__title">Billing Details</h6>
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="checkout__input">
+                                        <p>Fist Name<span>*</span></p>
+                                        <input type="text" name="fname" required>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="checkout__input">
+                                        <p>Last Name<span>*</span></p>
+                                        <input type="text" name="lname" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="checkout__input">
+                                <p>Country<span>*</span></p>
+                                <input type="text" name="country" required>
+                            </div>
+                            <div class="checkout__input">
+                                <p>Address<span>*</span></p>
+                                <input type="text" placeholder="Street Address" class="checkout__input__add" name="street" required>
+                                
+                            </div>
+                            <div class="checkout__input">
+                                <p>Town/City<span>*</span></p>
+                                <input type="text" name="city" required>
+                            </div>
+                            <div class="checkout__input">
+                                <p>State<span>*</span></p>
+                                <input type="text" name="state" required>
+                            </div>
+                            <div class="checkout__input">
+                                <p>Postcode / ZIP<span>*</span></p>
+                                <input type="text" name="zip" required>
+                            </div>
+							 <div class="checkout__input">
+                                 <p>Phone<span>*</span></p>
+                                 <input type="phone" name="phone" required>
+                              </div>
+                            <div class="checkout__input">
+                                        <p>Email<span>*</span></p>
+                                        <input type="text" name="email" required>
+                                    </div>
+                            <div class="checkout__input">
+                                <p>Order notes<span>*</span></p>
+                                <input type="text" name="notes" required
+                                placeholder="Notes about your order, e.g. special notes for delivery.">
+                            </div>
+                            <div class="form-group">
+                                <input type="checkbox" name="agree-term" id="agree-term" class="agree-term" required/>
+                                <label for="agree-term" class="label-agree-term"><span><span></span></span>I agree all the Terms of service</label>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6" th:each="item: ${session.cart}">
+                            <div class="checkout__order">
+                                <h4 class="order__title">Your order</h4>
+                                <div class="checkout__order__products">Product <span>Total</span></div>
+                                <ul class="checkout__total__products">
+                                    <li> <span>[[${item.product.prod_price}]]</span>  [[${item.product.prod_name}]]</li>
+                                </ul>
+                                <ul class="checkout__total__all">
+                                    <li>Subtotal <span th:text="${total}"></span></li>
+                                    <li>Total <span th:text="${total}"></span></li>
+                                </ul>
+                                <button type="submit" class="site-btn">PLACE ORDER</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+    <!-- Checkout Section End -->
+
+ 	<th:block th:insert="Footer.html"></th:block>
+</body>
+
+</html>
