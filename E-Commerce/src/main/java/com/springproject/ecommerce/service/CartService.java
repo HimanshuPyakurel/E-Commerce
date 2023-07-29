@@ -1,14 +1,15 @@
 package com.springproject.ecommerce.service;
 
-import com.springproject.ecommerce.model.Cart;
+import java.util.List;
 
+import com.springproject.ecommerce.model.Cart;
 
 public interface CartService {
 
-	 boolean saveCart(Cart cart);
+	void addItemToCart(List<Cart> cart);
 
-	 boolean updateCart(Cart cart);
+	void updateItemInCart(List<Cart> cart);
 
-	 Cart findCart();
+	void deleteItemFromCart(int id);
 
 }
