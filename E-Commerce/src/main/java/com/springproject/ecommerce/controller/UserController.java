@@ -37,7 +37,7 @@ public class UserController {
 	}
 	
 	@PostMapping("/login")
-	public String postLogin(@ModelAttribute User user, Model model, HttpSession session,@RequestParam("g-recaptcha-response") String grcCode) throws IOException {
+	public String postLogin(@ModelAttribute User user, Model model, HttpSession session) throws IOException {
 			
 			user.setPassword(DigestUtils.md5DigestAsHex(user.getPassword().getBytes()));
 			User  usr = userService.login(user.getUname(), user.getPassword());
