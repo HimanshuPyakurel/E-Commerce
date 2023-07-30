@@ -1,5 +1,6 @@
 package com.springproject.ecommerce.service;
 
+import java.util.List;
 import com.springproject.ecommerce.model.User;
 
 public interface IUserService {
@@ -9,5 +10,7 @@ public interface IUserService {
 	User ifExist(String un);
 	User getUserByEmail(String email);
 	void updatePwd(String pwd);
+	User findByUname(String uname);
+	List<User> getAllUser();
 	
 }
