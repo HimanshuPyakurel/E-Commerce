@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
 import com.springproject.ecommerce.model.Address;
 import com.springproject.ecommerce.model.Cart;
 import com.springproject.ecommerce.model.User;
@@ -18,7 +17,6 @@ import com.springproject.ecommerce.service.AddressService;
 import com.springproject.ecommerce.service.CartService;
 import com.springproject.ecommerce.service.IUserService;
 import com.springproject.ecommerce.service.ProductService;
-
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 
@@ -41,6 +39,7 @@ public class CartController {
 	@GetMapping("/show")
 	public String show(HttpSession session, Model model) {
 		
+		session.setAttribute("cart", cartservice.findAllCart());
     	model.addAttribute("total",total(session));
 		return "Cart"; 
 	}
@@ -61,27 +60,16 @@ public class CartController {
     		if(index == -1) {
     			cart.add(new Cart(1,prodService.findProductById(id)));
     		}else {
-    			int quantity = cart.get(index).getQuantity() +1;
+    			int quantity = cart.get(index).getQuantity();
     			cart.get(index).setQuantity(quantity);
     		}
     		session.setAttribute("cart",cart);
+    		cartservice.addItemToCart(cart);
     	} 
     	
     	model.addAttribute("total",total(session));
              
         return "Cart";
-    }
-	
-    @GetMapping("/delete")
-    public String deletecart(@RequestParam int id,HttpSession session,Model model)
-    {
-    	List<Cart> cart = (List<Cart>) session.getAttribute("cart");
-		int index = isExists(id, cart);
-    	cart.remove(index);
-    	session.setAttribute("cart",cart);	
-    	model.addAttribute("total",total(session));
-		return "Cart";
-    
     }
     
     @PostMapping("/update")
@@ -93,6 +81,7 @@ public class CartController {
     	for(int i=0;i<cart.size();i++) {
     		cart.get(i).setQuantity(Integer.parseInt(quantity[i]));
     	}
+    	cartservice.updateItemInCart(cart);
     	session.setAttribute("cart",cart);
     	model.addAttribute("total",total(session));
 		return "Cart";
@@ -107,7 +96,6 @@ public class CartController {
     		return "login";
     	}else { 		
     		List<Cart> cart = (List<Cart>) session.getAttribute("cart");
-    		cartservice.addItemToCart(cart);
     		model.addAttribute("total",total(session));
     		return "checkout";
     	}	
@@ -115,12 +103,27 @@ public class CartController {
     }
     
     @PostMapping("/checkout")
-    public String Checkoutcart(@ModelAttribute Address address){
-    	
+    public String Checkoutcart(@ModelAttribute Address address){  
     	addressservice.addAddress(address);
-		return "cart";
+		return "redirect:/shop/index";
     }
-      
+    
+    @GetMapping("/delete")
+    public String deletecart(@RequestParam int id,HttpSession session,Model model)
+    {
+    	List<Cart> cart = (List<Cart>) session.getAttribute("cart");
+    	
+		int index = isExists(id, cart);
+		cartservice.deleteItemFromCart(cart.get(index));
+    	cart.remove(index);	
+    	
+    	session.setAttribute("cart",cart);	
+    	model.addAttribute("total",total(session));
+		return "Cart";
+    
+    }
+    
+    
     private int isExists(int id, List<Cart> cart) {
     	for(int i=0; i<cart.size();i++) {
     		if(cart.get(i).getProduct().getId() == id) {
