@@ -10,6 +10,8 @@ public interface CartService {
 
 	void updateItemInCart(List<Cart> cart);
 
-	void deleteItemFromCart(int id);
+	void deleteItemFromCart(Cart cart);
+	
+	List<Cart> findAllCart();
 
 }
