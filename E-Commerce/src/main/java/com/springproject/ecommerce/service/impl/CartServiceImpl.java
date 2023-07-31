@@ -1,7 +1,6 @@
 package com.springproject.ecommerce.service.impl;
 
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.springproject.ecommerce.model.Cart;
@@ -22,15 +21,24 @@ public class CartServiceImpl implements CartService {
 
 	@Override
 	public void updateItemInCart(List<Cart> cart) {
-		// TODO Auto-generated method stub
+
+		cartRepo.saveAll(cart);
 		
 	}
 
 	@Override
-	public void deleteItemFromCart(int id) {
-		// TODO Auto-generated method stub
+	public void deleteItemFromCart(Cart cart) {
+		
+		cartRepo.delete(cart);
 		
 	}
+
+	@Override
+	public List<Cart> findAllCart() {
+		
+		return cartRepo.findAll();
+	}
+	
 
 	
 
