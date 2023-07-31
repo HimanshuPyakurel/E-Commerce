@@ -37,27 +37,28 @@ public class UserController {
 	}
 	
 	@PostMapping("/login")
-	public String postLogin(@ModelAttribute User user, Model model, HttpSession session) throws IOException {
-			
-			user.setPassword(DigestUtils.md5DigestAsHex(user.getPassword().getBytes()));
-			User  usr = userService.login(user.getUname(), user.getPassword());
-			System.out.println("=========="+usr);
-				if(usr != null) {
-					log.info("---------- Login Success ---------");
-					
-					session.setAttribute("validuser", usr);
-					session.setMaxInactiveInterval(200);
-					
-					//model.addAttribute("user",usr);
-					return "Home";
-				}else {
-					log.info("---------- Login Failed ---------");
-					model.addAttribute("message","User not Found!!!");
-					return  "login";
-				}
+	public String postLogin(@ModelAttribute User user, Model model, HttpSession session, @RequestParam("g-recaptcha-response") String grcCode) throws IOException {
+		
+		
+		user.setPassword(DigestUtils.md5DigestAsHex(user.getPassword().getBytes()));
+		User  usr = userService.login(user.getUname(), user.getPassword());
+		
+			if(usr != null) {
+				log.info("---------- Login Success ---------");
 				
+				session.setAttribute("validuser", usr);
+				session.setMaxInactiveInterval(200);
 				
+				//model.addAttribute("user",usr);
+				return "Home";
+			}else {
+				log.info("---------- Login Failed ---------");
+				model.addAttribute("message","User not Found!!!");
+				return  "login";
 			}
+					
+		}
+		
 	
 	@GetMapping("/signup")
 	public String getSingup() {
