@@ -1,5 +1,7 @@
 package com.springproject.ecommerce.service.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -45,6 +47,12 @@ public class UserServiceImpl implements IUserService {
 	public User findByUname(String uname) {
 		
 		return userRepo.findByUname(uname);
+	}
+
+	@Override
+	public List<User> getAllUser() {
+		
+		return userRepo.findAll();
 	}
 
 
