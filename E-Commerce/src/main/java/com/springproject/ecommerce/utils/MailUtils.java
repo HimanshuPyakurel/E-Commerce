@@ -24,13 +24,28 @@ public class MailUtils {
 	@Autowired
 	private IUserService userService;
 	
-	public void sendEmail(String toEmail, String subject, String message) {
+	public void sendEmail(String fromEmail,String toEmail, String subject, String message) {
 
         SimpleMailMessage msg = new SimpleMailMessage();
         
+        toEmail = "";
+        msg.setFrom(fromEmail);
         msg.setTo(toEmail);
         msg.setSubject(subject);
         msg.setText(message);
+
+        javaMailSender.send(msg);
+	}
+	
+	public void sendEmailBymail(String fromEmail,String toEmail) {
+
+        SimpleMailMessage msg = new SimpleMailMessage();
+        
+        toEmail = "";
+        msg.setFrom(fromEmail);
+        msg.setTo(toEmail);
+        msg.setSubject("About new arrivals");
+        msg.setText("I want to be the first to know about new arrivals");
 
         javaMailSender.send(msg);
 	}
