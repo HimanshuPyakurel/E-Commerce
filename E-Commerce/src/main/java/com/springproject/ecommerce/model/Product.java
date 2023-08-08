@@ -26,7 +26,6 @@ public class Product {
 	private String prod_code;
 	private String prod_description;
 	private int prod_quantity;
-	
 	private String imageName;
 	
 }
