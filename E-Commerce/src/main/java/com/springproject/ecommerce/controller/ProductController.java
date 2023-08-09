@@ -1,23 +1,19 @@
 package com.springproject.ecommerce.controller;
 
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
-
 import com.springproject.ecommerce.model.Product;
 import com.springproject.ecommerce.service.CategoryService;
 import com.springproject.ecommerce.service.ProductService;
 import com.springproject.ecommerce.utils.FileUtil;
-import com.springproject.ecommerce.utils.MailUtils;
 
 @Controller
 @RequestMapping("/product")
@@ -106,17 +102,17 @@ public class ProductController {
 		 
 		 return "productView";
 	 }
-	
-	    @GetMapping("/find")
-	    public String findProductById(@RequestParam int id, Model model){
-	    	
-	        Product product = prodService.findProductById(id);
-	        Long categoryId = product.getCategory().getId();
-	        List<Product> products = prodService.findProductByCategoryId(categoryId);
-	        model.addAttribute("product", product);
-	        model.addAttribute("products", products);
+	 
+	 @GetMapping("/find")
+	 public String findProductById(@RequestParam Long id, Model model){
+		 		
+		 List<Product> products = prodService.findProductByCategoryId(id);
+	     
+	     model.addAttribute("prodlist", products);
+	     model.addAttribute("catlist",catService.getAllCategory());
 	        
-	        return "redirect:/cart/add";
+	     return "shop";
+	     
 	    }
 	 
 	 
