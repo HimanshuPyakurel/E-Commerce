@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.springproject.ecommerce.model.Category;
+import com.springproject.ecommerce.model.Product;
 import com.springproject.ecommerce.repository.CategoryRepository;
 import com.springproject.ecommerce.service.CategoryService;
 
@@ -41,7 +42,6 @@ public class CategoryServiceImpl implements CategoryService{
 		
 		return catRepo.findAll();
 	}
-
 
 	
 	
