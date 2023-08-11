@@ -97,7 +97,7 @@
                                     <img th:src="@{'/images/'+ ${pro.imageName}}" width="200" height="250">
                                 </div>
                                 <div class="product__item__text">
-                                    <h6>[[${pro.prod_name}]]</h6>
+                                    <h6>[[${pro.name}]]</h6>
                                     <a th:href="@{/cart/add(id=${pro.id})}"  class="add-cart">&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;+ Add To Cart</a>
                                     <div class="rating">
                                         <i class="fa fa-star-o"></i>
@@ -106,7 +106,7 @@
                                         <i class="fa fa-star-o"></i>
                                         <i class="fa fa-star-o"></i>
                                     </div>
-                                    <h5>Rs: [[${pro.prod_price}]]</h5>
+                                    <h5>Rs: [[${pro.price}]]</h5>
                                   
                                 </div>
         
