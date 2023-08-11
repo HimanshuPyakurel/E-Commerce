@@ -38,6 +38,7 @@
 					<table class="table table-stripted">
 						<thead>
 							<tr>
+								<th>Image</th>
 								<th>Product Name</th>
 								
 								<th>Product Price</th>
@@ -54,13 +55,14 @@
 						
 						<tbody>
 							<tr th:each="pro: ${prodlist}">
-								<td>[[${pro.prod_name}]]</td>
+								<td><img th:src="@{'/images/'+ ${pro.imageName}}" alt="" width="60" height="60"></td>
+								<td>[[${pro.name}]]</td>
 								
-								<td>[[${pro.prod_price}]]</td>
+								<td>[[${pro.price}]]</td>
 								
-								<td>[[${pro.prod_code}]]</td>
+								<td>[[${pro.code}]]</td>
 								
-								<td>[[${pro.prod_quantity}]]</td>
+								<td>[[${pro.quantity}]]</td>
 								
 								<td>[[${pro.category.category_name}]]</td>			
 								
