@@ -47,7 +47,7 @@
                                         <div class="card-body">
                                         	<a href="/shop/index" style="color:DarkGray;">All</a>
                                             <div class="shop__sidebar__categories" th:each="cat: ${catlist}">
-                                           	    <a th:href="@{/product/find(id=${cat.id})}" style="color:DarkGray;">[[${cat.category_name}]]</a>                                          
+                                           	    <a th:href="@{/shop/find(id=${cat.id})}" style="color:DarkGray;">[[${cat.category_name}]]</a>                                          
                                                  
                                             </div>
                                         </div>
