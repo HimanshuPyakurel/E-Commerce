@@ -103,18 +103,6 @@ public class ProductController {
 		 return "productView";
 	 }
 	 
-	 @GetMapping("/find")
-	 public String findProductById(@RequestParam Long id, Model model){
-		 		
-		 List<Product> products = prodService.findProductByCategoryId(id);
-	     
-	     model.addAttribute("prodlist", products);
-	     model.addAttribute("catlist",catService.getAllCategory());
-	        
-	     return "shop";
-	     
-	    }
-	 
 	 
 }	
 	
