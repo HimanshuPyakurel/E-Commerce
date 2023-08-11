@@ -138,7 +138,7 @@ public class CartController {
     	double s = 0;
     	for(Cart item: cart) {
     		
-    		s+= item.getQuantity() * item.getProduct().getProd_price().doubleValue();
+    		s+= item.getQuantity() * item.getProduct().getPrice().doubleValue();
     		
     	}	
     	return s;
