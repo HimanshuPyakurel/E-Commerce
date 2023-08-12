@@ -96,7 +96,6 @@ public class ProductController {
 	 @GetMapping("/view")
 	 public String view(@RequestParam int id, Model model) {
 		 
-		 model.addAttribute("prodlist",prodService.findAllProduct());
 		 model.addAttribute("prodObject",prodService.findProductById(id));
 		 model.addAttribute("catObject", catService.getAllCategory());
 		 
