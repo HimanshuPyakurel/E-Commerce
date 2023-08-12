@@ -43,10 +43,11 @@ public class ShopController {
 	    }
 	 
 	 @PostMapping("/search")
-	 public String SearchProduct(@ModelAttribute String search, Model model) {
+	 public String SearchProduct(@ModelAttribute Product product, Model model) {
 		 
-		 List<Product> products = prodService.findProductByName(search);
+		 List<Product> products = prodService.findByName(product.getName());
 		 model.addAttribute("prodlist", products);
+		 model.addAttribute("catlist",categoryservice.getAllCategory());
 		 return "shop";
 	 }
 	 
