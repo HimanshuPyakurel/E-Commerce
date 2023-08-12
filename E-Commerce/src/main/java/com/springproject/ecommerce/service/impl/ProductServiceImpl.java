@@ -61,4 +61,10 @@ public class ProductServiceImpl implements ProductService{
 		return prodRepo.findById(id).get();
 	}
 
+	@Override
+	public List<Product> findProductByName(String productname) {
+		
+		return prodRepo.findByName(productname);
+	}
+
 }
