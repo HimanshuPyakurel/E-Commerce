@@ -94,7 +94,7 @@
                                 <h4 class="order__title">Your order</h4>
                                 <div class="checkout__order__products"><b>Product</b><span><b>Total</b></span></div>
                                 <ul class="checkout__total__products" th:each="item: ${session.cart}">
-                                    <li> <span>[[${item.product.prod_price}]]</span>[[${item.product.prod_name}]]</li>
+                                    <li> <span>[[${item.product.price}]]</span>[[${item.product.name}]]</li>
                                 </ul>
                                 <ul class="checkout__total__all">
                                     <li><b>Subtotal</b> <span th:text="${total}"></span></li>
