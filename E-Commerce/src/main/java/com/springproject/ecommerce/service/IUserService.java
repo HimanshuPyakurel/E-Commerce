@@ -12,5 +12,6 @@ public interface IUserService {
 	void updatePwd(String pwd);
 	User findByUname(String uname);
 	List<User> getAllUser();
+	void updateUser(User user);
 	
 }
