@@ -22,7 +22,7 @@ public interface ProductService {
 
 	Product findProductByIdForAdmin(int id);
 
-	List<Product> findProductByName(String productname);
+	List<Product> findByName(String name);
 	    
 
 	    
