@@ -95,5 +95,18 @@ public class UserController {
 		return "login";
 	}
 	
+	@GetMapping("/profile")
+	public String getProfile() {
+		return "myprofile";
+	}
+	
+	@PostMapping("/profile")
+	public String postProfile(@ModelAttribute User user, Model model) {
+		
+		model.addAttribute("user",user.getId());
+		userService.updateUser(user);
+		return "myprofile";
+	}
+	
 
 }
