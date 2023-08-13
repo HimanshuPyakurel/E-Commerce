@@ -55,6 +55,12 @@ public class UserServiceImpl implements IUserService {
 		return userRepo.findAll();
 	}
 
+	@Override
+	public void updateUser(User user) {
+		userRepo.save(user);
+		
+	}
+
 
 	
 }
