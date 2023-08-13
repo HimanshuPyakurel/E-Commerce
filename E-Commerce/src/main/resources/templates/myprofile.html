@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Profile</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  </head>
+
+  <body>
+  
+  <th:block th:insert="Header.html"></th:block>
+  
+  <!-- Breadcrumb Section Begin -->
+    <section class="breadcrumb-option">  	
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="breadcrumb__text">
+                        <h4>My Profile</h4>
+                        <div class="breadcrumb__links">
+                            <a href="/home/index">Home</a>
+                            <span>My Profile</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Breadcrumb Section End -->
+  
+  
+    <div class="container d-flex flex-column">
+      <div class="row align-items-center justify-content-center
+          min-vh-100">
+        <div class="col-12 col-md-8 col-lg-4">
+          <div class="card shadow-sm">
+            <div class="card-body">
+              <div class="mb-4">
+                <h5>My Profile</h5>
+                <p class="mb-2">You can change the details...
+                </p>
+              </div>
+              <form action="/user/profile" method="post">
+                <div class="mb-3">
+                  <label for="fname" class="form-label">First Name</label>
+                  <input type="text" id="fname" class="form-control" name="fname" placeholder="Enter Your First Name"
+                    required>
+                </div>
+                <div class="mb-3">
+                  <label for="lname" class="form-label">Last Name</label>
+                  <input type="text" id="lname" class="form-control" name="lname" placeholder="Enter Your Last Name"
+                    required>
+                </div>
+                <div class="mb-3">
+                  <label for="password" class="form-label">New Password</label>
+                  <input type="password" id="email" class="form-control" name="password" placeholder="Enter Your New Password"
+                    required>
+                </div>
+                <div class="mb-3 d-grid">
+                  <button type="submit" class="btn btn-primary">
+                    Update Profile
+                  </button>
+                </div>
+                
+              </form>
+            </div>
+          </div><br>
+          <div class="text-center">
+           <a href="/home/index"><button type="button" class="btn btn-success btn-lg text-center">Back</button></a><br><br>
+  		  </div>
+          
+        </div> 
+      </div>
+    </div>
+    
+    <th:block th:insert="Footer.html"></th:block>
+  </body>
+
+</html>
